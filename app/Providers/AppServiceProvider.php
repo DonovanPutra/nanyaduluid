@@ -11,6 +11,7 @@ use App\Models\Thread;
 use App\Contracts\ViewsContract;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,8 +32,13 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
+        if (config('.env') === 'production') {
+            URL::forceScheme('https');
+        }
+
+
         $this->bootEloquentMorphsRelations();
     }
 

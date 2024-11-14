@@ -25,7 +25,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         ReplyWasCreated::class => [
-            SendNewReplyNotification::class,
+            sendNewReplyNotification::class,
             AwardPointsForCreatingReply::class,
         ],
         ThreadWasCreated::class => [
